@@ -8,6 +8,11 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 import pandas as pd
 
+# from core import start_logging
+
+# logger = start_logging()
+
+
 default_args = {
     'owner': 'airflow',
     'start_date': days_ago(1),
@@ -26,8 +31,14 @@ def load_csv_to_postgres(**kwargs):
     csv_path = os.path.join(dag_folder, "data/test.csv")
 
     # Ебашим датафрейм
-    df = pd.read_csv(csv_path)
-    print(df)
+    # df = pd.read_csv(csv_path)
+    # logger.debug(df)
+
+    with open(csv_path, 'r') as f:
+        header = f.readline().strip().split(',')
+    # logger.debug(header)
+    print(header)
+    # Создание SQL запроса для создания таблицы
 
 
 with DAG('csv_to_postgres',
