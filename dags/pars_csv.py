@@ -1,93 +1,44 @@
 import os
-import datetime
-import time
-import requests
 
-import pandas as pd
 from airflow import DAG
-from airflow.operators.dummy_operator import DummyOperator
+# from airflow.providers.postgres.operators.postgres import PostgresOperator
+# from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.operators.python_operator import PythonOperator
-# from airflow.hooks.http_hook import HttpHook, PostgresHook
-from airflow.models import Variable
+from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
+import pandas as pd
 
-
-def create_db_if_notexist():
-    create_table_query = """
-    CREATE TABLE IF NOT EXISTS my_table (
-        Year INT
-        Industry_aggregation CHAR
-        Industry_code INT
-        Industry_name CHAR
-        Units CHAR
-        Variable_code CHAR
-        Variable_name CHAR
-        Variable_category CHAR
-        Value CHAR
-        Industry_code TEXT
-    );
-    """
-    cursor.execute(create_table_query)
-
-
-csv_file_path = 'test.csv'
-PG_CONN_ID = 'your_postgres_conn'
-PG_TABLE = 'my_table'
-
-args = {
-    'owner': 'Nick',
-    'depends_on_past': False,
-    'start_date': datetime(2024, 5, 14),
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
+default_args = {
+    'owner': 'airflow',
+    'start_date': days_ago(1),
 }
 
 
-def load_csv_to_postgres(**context):
+def load_csv_to_postgres(**kwargs):
+    """
+    Loads data from a CSV file to a PostgreSQL table
+    """
 
-    df = pd.read_csv(csv_file_path)
+    # Получаем путь к директории DAG файла
+    dag_folder = os.path.dirname(__file__)
 
-    create_table_query = create_db_if_notexist()
-    cursor.execute(create_table_query)
+    # Формируем полный путь к CSV файлу
+    csv_path = os.path.join(dag_folder, "data/test.csv")
 
-    print(df.head)
+    # Ебашим датафрейм
+    df = pd.read_csv(csv_path)
+    print(df)
 
 
-with DAG(
-        'csv_to_postgres',
-        default_args=args,
-        schedule_interval=timedelta(days=1),
-) as dag:
-    """# Get Postgres connection
-    get_postgres_conn = PythonOperator(
-        task_id='get_postgres_conn',
-        python_callable=get_postgres_conn_info,
-        provide_context=True,
-        dag=dag,
-    )"""
+with DAG('csv_to_postgres',
+         default_args=default_args,
+         schedule_interval=' *   *   *   *   * '
+         ) as dag:
 
-    # Load CSV to Postgres
+    # Загрузка CSV файла в PostgreSQL
     load_csv = PythonOperator(
-        task_id='load_csv',
-        python_callable=load_csv_to_postgres,
-        provide_context=True,
-        dag=dag,
+        task_id='load_csv_to_postgres',
+        python_callable=load_csv_to_postgres
     )
 
-    # Set task dependencies
     load_csv
-
-
-"""def get_postgres_conn_info(**context):
-
-    conn = context['params']['conn']
-    return psycopg2.connect(
-        host=conn.host,
-        port=conn.port,
-        user=conn.login,
-        password=conn.password,
-        database=conn.database
-    )
-"""
