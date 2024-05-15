@@ -67,14 +67,20 @@ def into_data(**kwargs):
     # Создание таблицы в PostgreSQL, если она еще не существует
     table_name = 'my_table'
     create_table_query = (f"CREATE TABLE IF NOT EXISTS {table_name} " +
-                          "(column1 INT, column2 VARCHAR(255), column3 INT);")
+                          "(year INT, industry_aggregation VARCHAR(10), " +
+                          "industry_code INT, industry_name VARCHAR(125), " +
+                          "units VARCHAR(55), varibale_code VARCHAR(125), " +
+                          "varibale_name VARCHAR(215)," +
+                          " varibale_category VARCHAR(125), " +
+                          "value DECIMAL, indastry_code VARCHAR(215));")
+
     conn = psycopg2.connect(dbname="airflow", user="airflow",
-                            password="airflow", host="localhost")
+                            password="airflow", host="host.docker.internal")
     cursor = conn.cursor()
     cursor.execute(create_table_query)
 
-    """
     # Загрузка данных из дата фрейма в таблицу PostgreSQL
+    # Эта хуйня в доработке
     insert_query = f"INSERT INTO {table_name} (column1, column2, column3) VALUES %s;"
     execute_values(cursor, insert_query, res_df.to_numpy())
 
@@ -83,7 +89,7 @@ def into_data(**kwargs):
 
     # Закрытие соединения с базой данных
     cursor.close()
-    conn.close()"""
+    conn.close()
 
 
 with DAG('csv_to_postgres',

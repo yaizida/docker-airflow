@@ -1,0 +1,114 @@
+-- lamoda_orders
+
+CREATE TABLE lamoda_orders (
+	id text NULL,
+	ordernr text NULL,
+	status text NULL,
+	paymentmethod text NULL,
+	rejectprice text NULL,
+	deliveryprice text NULL,
+	paymentdate text NULL,
+	isconfirmed bool NULL,
+	"comment" text NULL,
+	itemquantity int4 NULL,
+	createdat date NULL,
+	updatedat timestamp NULL,
+	delivered text NULL,
+	shipped timestamp NULL,
+	deprecatedid int8 NULL,
+	fullsum numeric NULL,
+	currency text NULL,
+	hasdiscrepancyacts bool NULL,
+	region text NULL,
+	city text NULL,
+	cityid text NULL,
+	isvalid bool NULL,
+	deliveryintervalid int8 NULL,
+	deliverydate text NULL,
+	deliveryintervalfrom text NULL,
+	deliveryintervalto text NULL,
+	isdeliverypricecustom bool NULL,
+	standarddeliveryprice text NULL,
+	deliverydatemax text NULL,
+	deliverydatemin text NULL,
+	shippingmethodname text NULL,
+	shippingmethodcode text NULL,
+	serviceleveltypecode text NULL,
+	serviceleveltypename text NULL,
+	storagedays text NULL,
+	cutoff text NULL,
+	hasintervals bool NULL,
+	code text NULL,
+	shopname text NULL,
+	partnerid int8 NULL,
+	externaldeliveryinfo text NULL,
+	rnk int8 NULL
+);
+
+
+
+-- map_product_status
+
+CREATE OR REPLACE VIEW lamoda.map_product_status
+AS SELECT 'Arrived to LM Express'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'Canceled'::text AS productstatus,
+    'отменен'::text AS productstatusru
+UNION ALL
+ SELECT 'Claimed defective'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Claimed ok'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Claimed used'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Confirmed'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'Delivered'::text AS productstatus,
+    'доставлен'::text AS productstatusru
+UNION ALL
+ SELECT 'Given to delivery'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'In delivery'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'Left LM Express'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'Not bought'::text AS productstatus,
+    'отказ'::text AS productstatusru
+UNION ALL
+ SELECT 'Not delivered'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'On shelf'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'Ready for shipment'::text AS productstatus,
+    'новый'::text AS productstatusru
+UNION ALL
+ SELECT 'Ready to refund'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Refund investigation'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Refund necessary'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Refunded'::text AS productstatus,
+    'возвращен'::text AS productstatusru
+UNION ALL
+ SELECT 'Returned'::text AS productstatus,
+    'отказ'::text AS productstatusru
+UNION ALL
+ SELECT 'Shipped'::text AS productstatus,
+    'новый'::text AS productstatusru;
+
+
+

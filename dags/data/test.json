@@ -1,0 +1,299 @@
+{
+  "page" : 6,
+  "limit" : 3,
+  "pages" : 124683,
+  "total" : 374048,
+  "_links" : {
+    "self" : {
+      "href" : "/api/v1/orders?page=6&limit=3"
+    },
+    "first" : {
+      "href" : "/api/v1/orders?page=1&limit=3"
+    },
+    "last" : {
+      "href" : "/api/v1/orders?page=124683&limit=3"
+    },
+    "next" : {
+      "href" : "/api/v1/orders?page=7&limit=3"
+    },
+    "previous" : {
+      "href" : "/api/v1/orders?page=5&limit=3"
+    }
+  },
+  "_embedded" : {
+    "orders" : [ {
+      "id" : "RU240229-924047-001C",
+      "orderNr" : "RU240229-924047",
+      "status" : "Confirmed",
+      "paymentMethod" : "TinkoffDolyame",
+      "rejectPrice" : null,
+      "deliveryPrice" : null,
+      "paymentDate" : null,
+      "isEditable" : false,
+      "isConfirmed" : true,
+      "comment" : "",
+      "itemQuantity" : 1,
+      "createdAt" : "2024-02-29",
+      "updatedAt" : "2024-02-29 22:43:40",
+      "dates" : {
+        "delivered" : null,
+        "shipped" : null
+      },
+      "deprecatedId" : 154372863,
+      "fullSum" : "5980.00",
+      "currency" : "rub",
+      "hasDiscrepancyActs" : false,
+      "_links" : {
+        "self" : {
+          "href" : "/api/v1/orders/RU240229-924047-001C"
+        }
+      },
+      "_embedded" : {
+        "shippingAddress" : {
+          "id" : 154372846,
+          "zipcode" : "*****",
+          "region" : "Свердловская обл",
+          "city" : "Каменск-Уральский",
+          "street" : "*****",
+          "houseNum" : "*****",
+          "apartment" : "*****",
+          "coordinate" : {
+            "latitude" : "*****",
+            "longitude" : "*****"
+          },
+          "cityId" : null,
+          "streetId" : "*****",
+          "buildingId" : "*****",
+          "isValid" : true,
+          "isEditable" : false,
+          "pickupPointId" : "*****"
+        },
+        "deliveryMethod" : {
+          "deliveryIntervalId" : "2803474912",
+          "deliveryDate" : null,
+          "deliveryIntervalFrom" : null,
+          "deliveryIntervalTo" : null,
+          "deliveryPrice" : null,
+          "isDeliveryPriceCustom" : false,
+          "standardDeliveryPrice" : null,
+          "deliveryDateMax" : null,
+          "deliveryDateMin" : null,
+          "shippingMethodName" : "Lamoda | Каменск-Уральский  | Каменская, 84",
+          "shippingMethodCode" : "lamoda_showroom_kamenskuralskiy_kamenskaya84",
+          "isEditable" : false,
+          "serviceLevelTypeCode" : "plus",
+          "serviceLevelTypeName" : null,
+          "storageDays" : null,
+          "cutOff" : null,
+          "hasIntervals" : false
+        },
+        "customer" : {
+          "firstName" : "*****",
+          "lastName" : "*****",
+          "middleName" : "*****",
+          "phone" : "*****",
+          "email" : "*****",
+          "isEditable" : false
+        },
+        "sessions" : [ ],
+        "partner" : {
+          "code" : "FZD",
+          "shopName" : "12Storeez FF",
+          "partnerId" : 734265840
+        },
+        "payments" : [ {
+          "amount" : 5980,
+          "method" : "TinkoffDolyame",
+          "status" : "new",
+          "successfulRedirect" : null,
+          "failureRedirect" : null,
+          "paymentUrl" : null,
+          "template" : null
+        } ],
+        "externalDeliveryInfo" : null
+      }
+    }, {
+      "id" : "RU240229-651178-001C",
+      "orderNr" : "RU240229-651178",
+      "status" : "Confirmed",
+      "paymentMethod" : "COD",
+      "rejectPrice" : null,
+      "deliveryPrice" : null,
+      "paymentDate" : null,
+      "isEditable" : false,
+      "isConfirmed" : true,
+      "comment" : "",
+      "itemQuantity" : 1,
+      "createdAt" : "2024-02-29",
+      "updatedAt" : "2024-02-29 22:41:48",
+      "dates" : {
+        "delivered" : null,
+        "shipped" : null
+      },
+      "deprecatedId" : 154372637,
+      "fullSum" : "49980.00",
+      "currency" : "rub",
+      "hasDiscrepancyActs" : false,
+      "_links" : {
+        "self" : {
+          "href" : "/api/v1/orders/RU240229-651178-001C"
+        }
+      },
+      "_embedded" : {
+        "shippingAddress" : {
+          "id" : 154372620,
+          "zipcode" : "*****",
+          "region" : "Краснодарский край",
+          "city" : "Славянск-на-Кубани",
+          "street" : "*****",
+          "houseNum" : "*****",
+          "apartment" : "*****",
+          "coordinate" : {
+            "latitude" : "*****",
+            "longitude" : "*****"
+          },
+          "cityId" : null,
+          "streetId" : "*****",
+          "buildingId" : "*****",
+          "isValid" : true,
+          "isEditable" : false,
+          "pickupPointId" : "*****"
+        },
+        "deliveryMethod" : {
+          "deliveryIntervalId" : "2801705214",
+          "deliveryDate" : null,
+          "deliveryIntervalFrom" : null,
+          "deliveryIntervalTo" : null,
+          "deliveryPrice" : null,
+          "isDeliveryPriceCustom" : false,
+          "standardDeliveryPrice" : null,
+          "deliveryDateMax" : null,
+          "deliveryDateMin" : null,
+          "shippingMethodName" : "Lamoda | Славянск-на-Кубани | Гриня, 294",
+          "shippingMethodCode" : "lamoda_showroom_snk_grinya_10230364",
+          "isEditable" : false,
+          "serviceLevelTypeCode" : "plus",
+          "serviceLevelTypeName" : null,
+          "storageDays" : null,
+          "cutOff" : null,
+          "hasIntervals" : false
+        },
+        "customer" : {
+          "firstName" : "*****",
+          "lastName" : "*****",
+          "middleName" : "*****",
+          "phone" : "*****",
+          "email" : "*****",
+          "isEditable" : false
+        },
+        "sessions" : [ ],
+        "partner" : {
+          "code" : "FZD",
+          "shopName" : "12Storeez FF",
+          "partnerId" : 734265840
+        },
+        "payments" : [ {
+          "amount" : 49980,
+          "method" : "BertelsmannCod",
+          "status" : "new",
+          "successfulRedirect" : null,
+          "failureRedirect" : null,
+          "paymentUrl" : null,
+          "template" : null
+        } ],
+        "externalDeliveryInfo" : null
+      }
+    }, {
+      "id" : "RU240229-789871-005C",
+      "orderNr" : "RU240229-789871",
+      "status" : "Confirmed",
+      "paymentMethod" : "COD",
+      "rejectPrice" : null,
+      "deliveryPrice" : null,
+      "paymentDate" : null,
+      "isEditable" : false,
+      "isConfirmed" : true,
+      "comment" : "",
+      "itemQuantity" : 1,
+      "createdAt" : "2024-02-29",
+      "updatedAt" : "2024-02-29 22:37:35",
+      "dates" : {
+        "delivered" : null,
+        "shipped" : null
+      },
+      "deprecatedId" : 154371756,
+      "fullSum" : "27980.00",
+      "currency" : "rub",
+      "hasDiscrepancyActs" : false,
+      "_links" : {
+        "self" : {
+          "href" : "/api/v1/orders/RU240229-789871-005C"
+        }
+      },
+      "_embedded" : {
+        "shippingAddress" : {
+          "id" : 154371739,
+          "zipcode" : "*****",
+          "region" : "Московская обл",
+          "city" : "Горки",
+          "street" : "*****",
+          "houseNum" : "*****",
+          "apartment" : "*****",
+          "coordinate" : {
+            "latitude" : "*****",
+            "longitude" : "*****"
+          },
+          "cityId" : null,
+          "streetId" : "*****",
+          "buildingId" : "*****",
+          "isValid" : true,
+          "isEditable" : false,
+          "pickupPointId" : "*****"
+        },
+        "deliveryMethod" : {
+          "deliveryIntervalId" : "2805262875",
+          "deliveryDate" : null,
+          "deliveryIntervalFrom" : null,
+          "deliveryIntervalTo" : null,
+          "deliveryPrice" : null,
+          "isDeliveryPriceCustom" : false,
+          "standardDeliveryPrice" : null,
+          "deliveryDateMax" : null,
+          "deliveryDateMin" : null,
+          "shippingMethodName" : "LMExpress Москва, Юг",
+          "shippingMethodCode" : "lamoda",
+          "isEditable" : false,
+          "serviceLevelTypeCode" : "plus",
+          "serviceLevelTypeName" : null,
+          "storageDays" : null,
+          "cutOff" : null,
+          "hasIntervals" : false
+        },
+        "customer" : {
+          "firstName" : "*****",
+          "lastName" : "*****",
+          "middleName" : "*****",
+          "phone" : "*****",
+          "email" : "*****",
+          "isEditable" : false
+        },
+        "sessions" : [ ],
+        "partner" : {
+          "code" : "FZD",
+          "shopName" : "12Storeez FF",
+          "partnerId" : 734265840
+        },
+        "payments" : [ {
+          "amount" : 27980,
+          "method" : "BertelsmannCod",
+          "status" : "new",
+          "successfulRedirect" : null,
+          "failureRedirect" : null,
+          "paymentUrl" : null,
+          "template" : null
+        } ],
+        "externalDeliveryInfo" : null
+      }
+    } ]
+  }
+}
