@@ -11,6 +11,7 @@ from airflow.utils.dates import days_ago
 from psycopg2.extras import execute_values
 import pandas as pd
 import psycopg2
+import requests
 # from core import start_logging
 
 # logger = start_logging()
@@ -31,56 +32,30 @@ json в базу с последующим распарсиванием
 
 default_args = {
     'owner': 'airflow',
-    'start_date': days_ago(1),
+    'start_date': days_ago(0),
 }
 
 
-def extract_data(**kwargs):
+def sender(**kwargs):
 
-    ti = kwargs['ti']
-    # Получаем путь к директории DAG файла
-    dag_folder = os.path.dirname(__file__)
-
-    # Формируем полный путь к CSV файлу
-    json_path = os.path.join(dag_folder, "data/test.json")
-
-    with open(json_path, 'r') as f:
-        template = json.load(f)
-
-    pprint.pprint(template)
-    ti.xcom_push(key='join_databse', value=template)
-
-
-def join_data(**kwargs):
-    ti = kwargs['ti']
-    res_json = ti.xcom_pull(key='join_databse', task_ids='extract_data')
-    pprint.pprint(res_json)
-
-    table_name = 'lamoda_orders'
-
-
-
+    TELEGRAM_TOKEN = '********'
+    TEXT_MSG = 'Внимение! Помещение провертирвается!\nВремя провертривания 15 мин.\nВыйдете из помещения'
+    chat_id_list = []  # список из chat_id пользователей телеграма
+    for chat_id in chat_id_list:
+        requests.get(f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage?chat_id={chat_id}&text={TEXT_MSG}') # noqa
 
 
 with DAG('json_join',
          default_args=default_args,
          catchup=False,
-         schedule_interval='*/1   *   *   *   * '
+         schedule_interval=('0 9,12,15,17.30  *   *   * ')
          ) as dag:
 
-    # Извлекаем данные из csv файла
-    extract_csv = PythonOperator(
+    send_msg = PythonOperator(
         task_id='extract_data',
-        python_callable=extract_data,
+        python_callable=sender,
         provide_context=True,
         dag=dag
     )
 
-    join_in_databse = PythonOperator(
-        task_id='join_data',
-        python_callable=join_data,
-        provide_callable=True,
-        dag=dag
-    )
-
-    extract_csv >> join_in_databse
+    send_msg
